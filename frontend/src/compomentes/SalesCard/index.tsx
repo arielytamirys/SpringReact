@@ -1,9 +1,16 @@
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import NotifictionButtons from '../NotifictionButtons';
 import './style.css'
 
 function SalesCard() {
+      //codigo para manter o estado das datas até a linha 33
+      const min = new Date (new Date().setDate(new Date() .getDate() - 365));
+      const max = new Date();
+
+      const [minDate, setMinDate]= useState(new Date(min));
+      const [maxDate, setMaxdate]= useState(new Date(max));
     return(
 
         <>
@@ -13,7 +20,7 @@ function SalesCard() {
               <div className="dsmeta-form-control-container">
               <DatePicker
                   selected={new Date()}
-                  onChange={(date: Date) => {}}
+                  onChange={(date: Date) => setMinDate(date)}
                   className="dsmeta-form-control"
                   dateFormat="dd/MM/yyyy"
               />
@@ -21,13 +28,14 @@ function SalesCard() {
               <div className="dsmeta-form-control-container">
               <DatePicker
                   selected={new Date()}
-                  onChange={(date: Date) => {}}
+                  onChange={(date: Date) => setMaxdate(date)}
                   className="dsmeta-form-control"
                   dateFormat="dd/MM/yyyy"
               />
               </div>
             </div>
-
+            
+            // da linha 38 a linha 93 foi feito as tabelas 
             <div>
               <table className="dsmeta-sales-table">
                 <thead>
