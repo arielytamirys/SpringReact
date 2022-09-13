@@ -2,6 +2,7 @@ package com.dsmetaariely.dsmeta.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,17 @@ public class Sales {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, nullable = false, unique = true)
 	private Long id;
+	@Column(name = "sellerName")
 	private String sellerName;
+	@Column(name = "visited")
 	private Integer visited;
+	@Column(name = "deals")
 	private Integer deals;
+	@Column(name = "amount")
 	private Double amount;
+	@Column(name = "sale_day")
 	private LocalDate date;
 
 	public Sales() {
